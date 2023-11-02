@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false })); // parses form submissions for
 
 // API Routes
 app.get('/api/cats', catController.index);
+app.get('/api/cats/search', catController.search);
 app.get('/api/cats/:id', catController.show);
 
 // Routes

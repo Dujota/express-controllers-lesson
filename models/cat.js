@@ -17,7 +17,12 @@ function getCatById(id) {
   return cats.find((cat) => cat.id === catId);
 }
 
+function getByfield(field, value) {
+  return cats.filter((cat) => cat[field] === value);
+}
+
 module.exports = {
   getAll: getAllCats,
   getOne: getCatById,
+  getByfield,
 };

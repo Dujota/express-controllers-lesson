@@ -18,7 +18,27 @@ const getOne = (req, res) => {
   res.json(cat);
 };
 
+const search = (req, res) => {
+  const field = req.query.field;
+  const value = req.query.value;
+  let cats = [];
+  if (value === 'true' || value === 'false') {
+    if (value === 'true') {
+      cats = Cat.getByfield(field, true);
+    } else {
+      cats = Cat.getByfield(field, false);
+    }
+  } else if (field === 'id') {
+    cats = Cat.getByfield(field, parseInt(value));
+  } else {
+    cats = Cat.getByfield(field, value);
+  }
+
+  res.json({ cats });
+};
+
 module.exports = {
   index: getCats,
   show: getOne,
+  search,
 };
