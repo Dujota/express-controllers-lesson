@@ -5,7 +5,6 @@ const cors = require('cors');
 // Controllers
 const catController = require('./controllers/catController');
 
-console.log(catController);
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -17,6 +16,7 @@ app.use(express.urlencoded({ extended: false })); // parses form submissions for
 
 // API Routes
 app.get('/api/cats', catController.index);
+app.get('/api/cats/:id', catController.show);
 
 // Routes
 app.get('*', (req, res) => {
